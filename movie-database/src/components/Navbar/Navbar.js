@@ -1,14 +1,6 @@
-/**
- * Import CSS Module Navbar.
- * Disimpan di object styles.
- */
 import styles from "./Navbar.module.css";
 
 function Navbar() {
-  /**
-   * Menggunakan styles yang sudah diimport.
-   * Memanggilnya menggunakan expression.
-   */
   return (
     <div className={styles.container}>
       <nav className={styles.navbar}>

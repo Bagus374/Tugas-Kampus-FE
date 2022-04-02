@@ -1,14 +1,9 @@
-// Import Navbar, Hero, Movies, Footer Component
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
 import Movies from "../components/Movies/Movies";
 import Footer from "../components/Footer/Footer";
-import AddMoviewForm from "../components/AddMovieForm/AddMoviewForm";
+import AddMoviewForm from "../components/AddMoviewForm/AddMoviewForm";
 
-/**
- * Membuat Component Main.
- * Menampung Hero dan Movies
- */
 function Main() {
   return (
     <main>
@@ -18,11 +13,6 @@ function Main() {
   );
 }
 
-/**
- * Membuat Component Home.
- * Menampilkan Halaman Home.
- * Menampung Navbar, Main, dan Footer Component
- */
 function Home() {
   return (
     <>
