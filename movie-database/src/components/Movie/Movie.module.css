@@ -1,4 +1,10 @@
 /* Small Screen */
+.section {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+
 .movie {
   margin-bottom: 1rem;
 }
