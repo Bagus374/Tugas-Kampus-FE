@@ -20,6 +20,7 @@ function AddMovieForm(props) {
 
   const [isTitleError, setIsTitleError] = useState(false);
   const [isDateError, setIsDateError] = useState(false);
+  const [isPosterError, setIsPosterError] = useState(false);
 
   function handleTitle(e) {
     setTitle(e.target.value);
@@ -39,7 +40,10 @@ function AddMovieForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (title === "") {
+    // eslint-disable-next-line no-useless-escape
+    if (!poster.match(/^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/) || poster === "") {
+      setIsPosterError(true);
+    } else if (title === "") {
       setIsTitleError(true);
     } else if (date === "") {
       setIsDateError(true);
@@ -49,11 +53,12 @@ function AddMovieForm(props) {
         title: title,
         year: date,
         type: typeMovie,
-        poster: poster === "" ? "https://picsum.photos/300/400" : poster,
+        poster: poster,
       };
 
       setMovies([...movies, movie]);
 
+      setIsPosterError(false);
       setIsTitleError(false);
       setIsDateError(false);
     }
@@ -100,6 +105,7 @@ function AddMovieForm(props) {
                 value={poster}
                 onChange={handlePoster}
               />
+              {isPosterError && <Alert>Format inputan harus berupa link & wajib diisi</Alert>}
             </div>
             <div className={styles.form__group}>
               <label htmlFor="title" className={styles.form__label}>
