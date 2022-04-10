@@ -1,6 +1,6 @@
 /* Small Screen */
 .section {
-  justify-content: center;
+  justify-content: space-between;
   display: flex;
   flex-direction: row;
 }

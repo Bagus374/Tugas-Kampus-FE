@@ -12,7 +12,7 @@ function Movie(props) {
       />
       <h3 className={styles.movie__title}>{movie.title}</h3>
       <div className={styles.section}>
-        <p className={styles.movie__date}>{movie.year}</p> | <p className={styles.movie__date}>{movie.type}</p>
+        <p className={styles.movie__date}>{movie.year}</p><p className={styles.movie__date}>{movie.type}</p>
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ function AddMovieForm(props) {
   const [poster, setPoster] = useState("");
 
   const getInitialState = () => {
-    const value = "Action";
+    const value = "";
     return value;
   };
   const [typeMovie, setTypeMovie] = useState(getInitialState);
@@ -21,6 +21,7 @@ function AddMovieForm(props) {
   const [isTitleError, setIsTitleError] = useState(false);
   const [isDateError, setIsDateError] = useState(false);
   const [isPosterError, setIsPosterError] = useState(false);
+  const [isTypeError, setIsTypeError] = useState(false);
 
   function handleTitle(e) {
     setTitle(e.target.value);
@@ -40,8 +41,15 @@ function AddMovieForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // eslint-disable-next-line no-useless-escape
-    if (!poster.match(/^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/) || poster === "") {
+    if (typeMovie === "") {
+      setIsTypeError(true);
+    } else if (
+      !poster.match(
+        // eslint-disable-next-line no-useless-escape
+        /^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/
+      ) ||
+      poster === ""
+    ) {
       setIsPosterError(true);
     } else if (title === "") {
       setIsTitleError(true);
@@ -58,6 +66,7 @@ function AddMovieForm(props) {
 
       setMovies([...movies, movie]);
 
+      setIsTypeError(false);
       setIsPosterError(false);
       setIsTitleError(false);
       setIsDateError(false);
@@ -83,7 +92,6 @@ function AddMovieForm(props) {
               </label>
               <div className={styles.select}>
                 <select
-                  className={styles.custom_select}
                   value={typeMovie}
                   onChange={handleTypeMovie}
                 >
@@ -92,6 +100,7 @@ function AddMovieForm(props) {
                   ))}
                 </select>
               </div>
+              {isTypeError && <Alert>Genre Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>
               <label htmlFor="title" className={styles.form__label}>
@@ -105,7 +114,9 @@ function AddMovieForm(props) {
                 value={poster}
                 onChange={handlePoster}
               />
-              {isPosterError && <Alert>Format inputan harus berupa link & wajib diisi</Alert>}
+              {isPosterError && (
+                <Alert>Format inputan harus berupa link & wajib diisi</Alert>
+              )}
             </div>
             <div className={styles.form__group}>
               <label htmlFor="title" className={styles.form__label}>

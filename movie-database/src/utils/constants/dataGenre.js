@@ -1,5 +1,9 @@
 const dataGenre = [
   {
+    label: "- Select Options -",
+    value: "",
+  },
+  {
     label: "Action",
     value: "Action",
   },
