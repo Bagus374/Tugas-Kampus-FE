@@ -1,55 +1,38 @@
-/* Small Screen */
 .container {
-  background-color: #4361ee;
+  background-color: #06d6a0;
   padding: 1rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
   color: #fff;
 }
 
-.navbar {
-  display: flex;
-  flex-direction: column;
-}
-
-.navbar__brand {
-  font-size: 2.4rem;
+.navbar__main {
   margin-bottom: 1rem;
 }
-
 .navbar__list {
-  display: flex;
-  flex-direction: column;
   list-style: none;
 }
-
 .navbar__item {
   margin-bottom: 1rem;
 }
 
-/* Medium Screen */
 @media (min-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
   .navbar {
-    flex-direction: row;
+    display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem;
   }
-
-  .navbar__brand {
-    margin-bottom: 0;
+  .navbar__main {
+    margin: 0;
   }
-
   .navbar__list {
-    flex-direction: row;
+    display: flex;
   }
-
   .navbar__item {
     margin: 0 1rem;
   }
-}
-
-/* Large Screen */
-@media (min-width: 992px) {
-  /* 
-   * Nothing TODO HERE.
-   * We haven't styling Navbar.
-   */
 }

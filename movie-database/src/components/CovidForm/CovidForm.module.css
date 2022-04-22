@@ -1,0 +1,89 @@
+.container {
+  margin: 1rem;
+}
+
+.covidform {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+
+}
+.covidform__image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 25px;
+}
+.covidform__title {
+  color: #06D6A0;
+  margin-bottom: 1rem;
+  font-size: 2.44rem;
+}
+.covidform_form {
+  align-items: center;
+}
+
+.covidform__label {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+  text-align: left;
+}
+.covidform__input {
+  width: 90%;
+  height: 43px;
+  background: #ffffff;
+  border: 2px solid #06D6A0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.covidform__select {
+  width: 90%;
+  height: 43px;
+  background: #ffffff;
+  border: 2px solid #06D6A0;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.covidform__submit {
+  margin-top: 1rem;
+  width: 90%;
+  height: 43px;
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #06D6A0;
+  color: #fff;
+}
+
+p {
+  color: red;
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 1200px;
+    margin: 3rem auto;
+  }
+
+  .covidform {
+    margin: 0 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  .covidform__left {
+    flex-basis: 60%;
+  }
+
+  .covidform__right {
+    flex-basis: 40%;
+  }
+
+  p {
+    color: red;
+  }
+}

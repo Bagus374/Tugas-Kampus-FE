@@ -1,0 +1,30 @@
+.container {
+  margin: 1rem;
+}
+
+.content_title {
+  color: #06d6a0;
+  text-align: center;
+}
+
+.content_description {
+  color: #118ab2;
+  text-align: center;
+}
+
+.content_table_data {
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+
+th, td {
+  border: 1px solid #06d6a0;
+  padding: 15px;
+}
+@media (min-width: 992px) {
+  .container {
+    max-width: 1200px;
+    margin: 3rem auto;
+  }
+}

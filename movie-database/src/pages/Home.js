@@ -1,30 +1,34 @@
-import Navbar from "../components/Navbar/Navbar";
-import Hero from "../components/Hero/Hero";
-import Movies from "../components/Movies/Movies";
-import Footer from "../components/Footer/Footer";
-import AddMovieForm from "../components/AddMovieForm/AddMovieForm";
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-use-before-define */
 import { useState } from "react";
-import data from "../utils/constants/data";
+import Footer from "../components/Footer/Footer";
+import Hero from "../components/Hero/Hero";
+import Navbar from "../components/Navbar/Navbar";
+import Global from "../components/Global/Global";
+import Provinces from "../components/Provinces/Provinces";
+import CovidForm from "../components/CovidForm/CovidForm";
+import data from "../utils/constants/provinces";
 
 function Main() {
-  const [movies, setMovies] = useState(data);
+  const [provinces, setProvinces] = useState(data.provinces);
 
   return (
     <main>
       <Hero />
-      <Movies movies={movies} setMovies={setMovies} />
-      <AddMovieForm movies={movies} setMovies={setMovies} />
+      <Global />
+      <Provinces provinces={provinces} setProvinces={setProvinces} />
+      <CovidForm provinces={provinces} setProvinces={setProvinces} />
     </main>
   );
 }
 
 function Home() {
   return (
-    <>
+    <div>
       <Navbar />
       <Main />
       <Footer />
-    </>
+    </div>
   );
 }
 

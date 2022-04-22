@@ -1,7 +1,5 @@
-/* Small Screen */
 .container {
-  margin: 5rem auto;
-  padding: 1rem;
+  margin: 1rem;
 }
 
 .hero {
@@ -15,13 +13,13 @@
 }
 
 .hero__title {
-  color: #4361ee;
+  color: #06D6A0;
   margin-bottom: 1rem;
   font-size: 2.44rem;
 }
 
-.hero__genre {
-  color: #b5179e;
+.hero__title_main {
+  color: #118AB2;
   margin-bottom: 1rem;
   font-size: 1.59rem;
 }
@@ -35,7 +33,7 @@
   padding: 0.8rem 2rem;
   border: none;
   border-radius: 10px;
-  background-color: #4361ee;
+  background-color: #06D6A0;
   color: #fff;
 }
 
@@ -45,21 +43,14 @@
   border-radius: 25px;
 }
 
-/* Medium Screen */
-@media (min-width: 768px) {
-  /*
-   * Nothing TODO Here.
-   * We dont change style Hero. 
-   */
-}
-
-/* Large Screen */
 @media (min-width: 992px) {
   .container {
     max-width: 1200px;
+    margin: 3rem auto;
   }
 
   .hero {
+    margin: 0 1rem;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
