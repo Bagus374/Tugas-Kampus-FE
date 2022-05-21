@@ -43,7 +43,7 @@ const data = [
     id: "tt8097030",
     title: "Turning Red",
     year: "2022",
-    type: "movie",
+    yype: "movie",
     poster:
       "https://m.media-amazon.com/images/M/MV5BNjY0MGEzZmQtZWMxNi00MWVhLWI4NWEtYjQ0MDkyYTJhMDU0XkEyXkFqcGdeQXVyODc0OTEyNDU@._V1_SX300.jpg",
   },

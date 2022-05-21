@@ -1,77 +1,81 @@
-/* eslint-disable no-const-assign */
+/* eslint-disable no-undef */
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import Alert from "../Alert/Alert";
 import styles from "./AddMovieForm.module.css";
-import dataGenre from "../../utils/constants/dataGenre";
 
 function AddMovieForm(props) {
   const { movies, setMovies } = props;
 
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
-  const [poster, setPoster] = useState("");
+  const [formData, setFormData] = useState({
+    title: "",
+    date: "",
+    poster: "",
+    type: "",
+  });
 
-  const getInitialState = () => {
-    const value = "";
-    return value;
-  };
-  const [typeMovie, setTypeMovie] = useState(getInitialState);
+  const [validateFormData, setValidateFormData] = useState({
+    setIsTitleError: false,
+    setIsDateError: false,
+    setIsPosterError: false
+  })
 
-  const [isTitleError, setIsTitleError] = useState(false);
-  const [isDateError, setIsDateError] = useState(false);
-  const [isPosterError, setIsPosterError] = useState(false);
-  const [isTypeError, setIsTypeError] = useState(false);
+  // const [isTitleError, setIsTitleError] = useState(false);
+  // const [isDateError, setIsDateError] = useState(false);
+  // const [isPosterError, setIsPosterError] = useState(false);
 
-  function handleTitle(e) {
-    setTitle(e.target.value);
+  function handleChange(e) {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    setValidateFormData({
+      ...validateFormData
+    })
   }
 
-  function handleDate(e) {
-    setDate(e.target.value);
+  function validate() {
+    if (title === "") {
+      setIsTitleError(true);
+      return false;
+    } else if (date === "") {
+      setIsDateError(true);
+      setIsTitleError(false);
+      return false;
+    } else if (poster === "") {
+      setIsPosterError(true);
+      setIsDateError(false);
+      return false;
+    } else {
+      setIsTitleError(false);
+      setIsDateError(false);
+      return true;
+    }
   }
 
-  function handlePoster(e) {
-    setPoster(e.target.value);
-  }
+  function addMovie() {
+    const movie = {
+      id: nanoid(),
+      title: title,
+      year: date,
+      type: type,
+      poster: poster,
+    };
 
-  function handleTypeMovie(e) {
-    setTypeMovie(e.target.value);
+    setMovies([...movies, movie]);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (typeMovie === "") {
-      setIsTypeError(true);
-    } else if (
-      !poster.match(
-        // eslint-disable-next-line no-useless-escape
-        /^(ht|f)tps?:\/\/[a-z0-9-\.]+\.[a-z]{2,4}\/?([^\s<>\#%"\,\{\}\\|\\\^\[\]`]+)?$/
-      ) ||
-      poster === ""
-    ) {
-      setIsPosterError(true);
-    } else if (title === "") {
-      setIsTitleError(true);
-    } else if (date === "") {
-      setIsDateError(true);
-    } else {
-      const movie = {
-        id: nanoid(),
-        title: title,
-        year: date,
-        type: typeMovie,
-        poster: poster,
-      };
 
-      setMovies([...movies, movie]);
-
-      setIsTypeError(false);
-      setIsPosterError(false);
-      setIsTitleError(false);
-      setIsDateError(false);
-    }
+    validate() && addMovie();
   }
+
+  const { title, date, poster, type } = formData;
+  const { setIsTitleError, setIsDateError, setIsPosterError } = validateFormData;
 
   return (
     <div className={styles.container}>
@@ -88,38 +92,6 @@ function AddMovieForm(props) {
           <form onSubmit={handleSubmit}>
             <div className={styles.form__group}>
               <label htmlFor="title" className={styles.form__label}>
-                Genre
-              </label>
-              <div className={styles.select}>
-                <select
-                  value={typeMovie}
-                  onChange={handleTypeMovie}
-                >
-                  {dataGenre.map((option) => (
-                    <option value={option.value}>{option.label}</option>
-                  ))}
-                </select>
-              </div>
-              {isTypeError && <Alert>Genre Wajib Diisi</Alert>}
-            </div>
-            <div className={styles.form__group}>
-              <label htmlFor="title" className={styles.form__label}>
-                Link Poster
-              </label>
-              <input
-                id="poster"
-                className={styles.form__input}
-                type="text"
-                name="poster"
-                value={poster}
-                onChange={handlePoster}
-              />
-              {isPosterError && (
-                <Alert>Format inputan harus berupa link & wajib diisi</Alert>
-              )}
-            </div>
-            <div className={styles.form__group}>
-              <label htmlFor="title" className={styles.form__label}>
                 Title
               </label>
               <input
@@ -128,9 +100,9 @@ function AddMovieForm(props) {
                 type="text"
                 name="title"
                 value={title}
-                onChange={handleTitle}
+                onChange={handleChange}
               />
-              {isTitleError && <Alert>Title Wajib Diisi</Alert>}
+              {validateFormData && <Alert>Title Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>
               <label htmlFor="date" className={styles.form__label}>
@@ -142,9 +114,39 @@ function AddMovieForm(props) {
                 type="text"
                 name="date"
                 value={date}
-                onChange={handleDate}
+                onChange={handleChange}
               />
-              {isDateError && <Alert>Date Wajib Diisi</Alert>}
+              {validateFormData && <Alert>Date Wajib Diisi</Alert>}
+            </div>
+            <div className={styles.form__group}>
+              <label htmlFor="poster" className={styles.form__label}>
+                Poster
+              </label>
+              <input
+                onChange={handleChange}
+                id="poster"
+                className={styles.form__input}
+                name="poster"
+                type="text"
+                value={poster}
+              />
+              {validateFormData && <Alert>Poster Wajib Diisi</Alert>}
+            </div>
+            <div className={styles.form__group}>
+              <label htmlFor="type" className={styles.form__label}>
+                Type
+              </label>
+              <select
+                id="type"
+                className={styles.form__select}
+                name="type"
+                value={type}
+                onChange={handleChange}
+              >
+                <option value="Action">Action</option>
+                <option value="Drama">Drama</option>
+                <option value="Horor">Horor</option>
+              </select>
             </div>
             <div>
               <button className={styles.form__button}>Add Movie</button>

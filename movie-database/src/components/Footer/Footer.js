@@ -1,14 +1,6 @@
-/**
- * Import CSS Module Footer.
- * Disimpan di object styles.
- */
 import styles from "./Footer.module.css";
 
 function Footer() {
-  /**
-   * Menggunakan styles yang sudah diimport.
-   * Memanggilnya menggunakan expression.
-   */
   return (
     <div className={styles.container}>
       <footer className={styles.footer}>
