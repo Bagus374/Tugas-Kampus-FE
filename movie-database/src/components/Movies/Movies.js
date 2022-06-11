@@ -3,7 +3,7 @@ import Movie from "../Movie/Movie";
 import styles from "./Movies.module.css";
 
 function Movies(props) {
-  const { movies, setMovies } = props;
+  const { movies, setMovies, title } = props;
 
   function handleClick() {
     const movie = {
@@ -21,13 +21,13 @@ function Movies(props) {
     <div>
       <div className={styles.container}>
         <section className={styles.movies}>
-          <h2 className={styles.movies__title}>Latest Movies</h2>
+          <h2 className={styles.movies__title}>{title}</h2>
           <div className={styles.movie__container}>
             {movies.map((movie) => {
               return <Movie key={movie.id} movie={movie} />;
             })}
           </div>
-          <button onClick={handleClick}>Add Movie</button>
+          {/* <button onClick={handleClick}>Add Movie</button> */}
         </section>
       </div>
     </div>

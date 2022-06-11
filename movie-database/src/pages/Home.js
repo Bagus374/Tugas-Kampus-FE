@@ -1,6 +1,5 @@
 import Hero from "../components/Hero/Hero";
 import Movies from "../components/Movies/Movies";
-import AddMovieForm from "../components/AddMovieForm/AddMovieForm";
 import { useState } from "react";
 import data from "../utils/constants/data";
 
@@ -10,8 +9,7 @@ function Home() {
   return (
     <>
       <Hero />
-      <Movies movies={movies} setMovies={setMovies} />
-      <AddMovieForm movies={movies} setMovies={setMovies} />
+      <Movies title="Latest Movie" movies={movies} setMovies={setMovies} />
     </>
   );
 }
