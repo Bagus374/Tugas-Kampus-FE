@@ -1,4 +1,3 @@
-/* Small Screen */
 .container {
   margin: 5rem 1rem;
   padding: 1rem;
@@ -69,7 +68,6 @@
   width: 100%;
 }
 
-/* Large Screen */
 @media (min-width: 992px) {
   .container {
     max-width: 1200px;

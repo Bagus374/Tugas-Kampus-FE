@@ -11,11 +11,13 @@ function NowPlayingMovie() {
 
   useEffect(() => {
     getNowPlayingMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function getNowPlayingMovies() {
     const response = await axios(ENDPOINTS.NOW_PLAYING);
-    dispatch(updateMovies(response.data.results));
+    const movies = response.data.results;
+    dispatch(updateMovies(movies));
   }
 
   return (

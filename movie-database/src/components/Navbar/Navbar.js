@@ -1,44 +1,37 @@
-// Import Link dari React Router
 import { Link } from "react-router-dom";
-import StyledNavbar, { Container } from "./Navbar.styled";
+import { StyledNavbar, StyledNav } from "./Navbar.styled";
+import styled from "styled-components";
 
 function Navbar() {
-  /**
-   * Menggunakan styles yang sudah diimport.
-   * Memanggilnya menggunakan expression.
-   */
   return (
-    <Container>
-      <StyledNavbar>
-        <div>
-          <h1>Movie App</h1>
-        </div>
-        <div>
-          {/*
-           * Membuat Link/Navigasi.
-           * Menggunakan Link Component dari React Router
-           */}
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/movie/create">Add Movie</Link>
-            </li>
-            <li>
-              <Link to="/movie/popular">Popular</Link>
-            </li>
-            <li>
-              <Link to="/movie/now">Now Playing</Link>
-            </li>
-            <li>
-              <Link to="/movie/top">Top Rated</Link>
-            </li>
-          </ul>
-        </div>
-      </StyledNavbar>
-    </Container>
+    <StyledNavbar>
+      <StyledNav>
+        <h1>Movie App</h1>
+        <ul>
+          <li>
+            <StyledLink to="/">Home</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/movie/create">Add Movie</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/movie/popular">Popular</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/movie/now">Now Playing</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/movie/top">Top Rated</StyledLink>
+          </li>
+        </ul>
+      </StyledNav>
+    </StyledNavbar>
   );
 }
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+`;
 
 export default Navbar;

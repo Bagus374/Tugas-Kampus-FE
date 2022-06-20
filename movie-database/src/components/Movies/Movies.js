@@ -1,14 +1,8 @@
-// Import useSelector: untuk mengakses state redux
 import { useSelector } from "react-redux";
 import Movie from "../Movie/Movie";
 import styles from "./Movies.module.css";
 
 function Movies({ title }) {
-  /**
-   * Gunakan useSelector untuk mengakses state redux.
-   * Menerima parameter state (global state).
-   * Akses state movies: state global - nama reducer - nama state
-   */
   const movies = useSelector((state) => state.movies.movies);
 
   return (

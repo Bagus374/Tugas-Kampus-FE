@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+const StyledNavbar = styled.div`
   background-color: #4361ee;
   padding: 1rem;
   color: #fff;
 `;
 
-const StyledNavbar = styled.nav`
+const StyledNav = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -25,12 +25,7 @@ const StyledNavbar = styled.nav`
     margin-bottom: 1rem;
   }
 
-  a {
-    text-decoration: none;
-    color: #fff;
-  }
-
-  @media screen and (min-width: 768px) {
+  @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -47,10 +42,6 @@ const StyledNavbar = styled.nav`
       margin: 0 1rem;
     }
   }
-
-  @media screen and (min-width: 992px) {
-  }
 `;
 
-export default StyledNavbar;
-export { Container };
+export { StyledNavbar, StyledNav };

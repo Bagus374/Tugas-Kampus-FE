@@ -1,21 +1,13 @@
 import styled from "styled-components";
 
-const Container = styled.div`
-  margin: 5rem auto;
-  padding: 1rem;
+const StyledHero = styled.div`
+    margin: 5rem auto;
+    padding: 1rem;
 
-  @media screen and (min-width: 992px) {
-    max-width: 1200px;
-  }
-`;
-
-const StyledHero = styled.section`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-
-  .hero__left {
-    margin-bottom: 1rem;
+  section {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
   }
 
   h2 {
@@ -46,20 +38,30 @@ const StyledHero = styled.section`
     border-radius: 25px;
   }
 
-  @media screen and (min-width: 769px) {
-  }
+  @media (min-width: 992px) {
+    max-width: 1200px;
 
-  @media screen and (min-width: 992px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    text-align: left;
-
-    .hero__left {
-      flex-basis: 40%;
+    section {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
     }
   }
 `;
 
-export default StyledHero;
-export { Container };
+const StyledHeroLeft = styled.div`
+  margin-bottom: 1rem;
+
+  @media (min-width: 992px) {
+    flex-basis: 50%;
+  }
+`;
+
+const StyledHeroRight = styled.div`
+  @media (min-width: 992px) {
+    flex-basis: 30%;
+  }
+`;
+
+export { StyledHero, StyledHeroLeft, StyledHeroRight};

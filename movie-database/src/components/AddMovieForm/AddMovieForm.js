@@ -7,10 +7,8 @@ import Alert from "../Alert/Alert";
 import Button from "../ui/Button";
 import styles from "./AddMovieForm.module.css";
 
-// Menangkap props
 function AddMovieForm() {
   const navigation = useNavigate();
-  // Membuat useDispatch
   const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
@@ -20,24 +18,13 @@ function AddMovieForm() {
     type: "",
   });
 
-  /**
-   * TODO
-   * - PROBLEM: 1 ERROR 1 STATE.
-   * - TODO: REFACTOR SEMUA ERROR JADI 1 STATE.
-   */
   const [isTitleError, setIsTitleError] = useState(false);
   const [isDateError, setIsDateError] = useState(false);
   const [isPosterError, setIsPosterError] = useState(false);
 
   function handleChange(e) {
-    // Destructing name dan value.
     const { name, value } = e.target;
 
-    /**
-     * Mengupdate state berupa object:
-     * - Menggunakan spread operator:
-     * - Update property berdasarkan apapun nilai name.
-     */
     setFormData({
       ...formData,
       [name]: value,
@@ -72,10 +59,6 @@ function AddMovieForm() {
       poster: poster,
     };
 
-    /**
-     * Gunakan dispath untuk menjalankan action addMovie.
-     * Kirim data movie ke action addMovie (payload).
-     */
     dispatch(addMovie(movie));
     navigation("/");
   }
@@ -110,15 +93,10 @@ function AddMovieForm() {
                 className={styles.form__input}
                 type="text"
                 name="title"
-                // Memberikan value input: title
                 value={title}
-                // Memberikan event onChange
                 onChange={handleChange}
               />
-              {/*
-               * Menambahkan infline if: operator &&
-               * Jika isTitleError true maka render error
-               */}
+
               {isTitleError && <Alert>Title Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>
@@ -130,15 +108,10 @@ function AddMovieForm() {
                 className={styles.form__input}
                 type="text"
                 name="date"
-                // Memberikan value input: date
                 value={date}
-                // Memberikan event onChange
                 onChange={handleChange}
               />
-              {/*
-               * Menambahkan infline if: operator &&
-               * Jika isDateError true maka render error
-               */}
+              
               {isDateError && <Alert>Date Wajib Diisi</Alert>}
             </div>
             <div className={styles.form__group}>

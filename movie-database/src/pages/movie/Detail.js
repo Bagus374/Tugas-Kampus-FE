@@ -8,18 +8,17 @@ import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constants/endpoint";
 
 function Detail() {
-  // Simpan movies (state), id (params), API_KEY ke variable
-  const { id } = useParams();
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   useEffect(() => {
     getRecommendationMovies();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   async function getRecommendationMovies() {
     const response = await axios(ENDPOINTS.RECOMMENDATIONS(id));
-    dispatch(updateMovies(response.data.results));
+    const movies = response.data.results;
+    dispatch(updateMovies(movies));
   }
 
   return (

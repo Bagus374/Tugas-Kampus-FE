@@ -1,9 +1,7 @@
-import { Link } from "react-router-dom";
 import StyledMovie from "./Movie.styled";
+import { Link } from "react-router-dom";
 
-// Component Movie menerima props
 function Movie(props) {
-  // Melakukan destructing props
   const { movie } = props;
 
   return (
@@ -14,7 +12,6 @@ function Movie(props) {
         }
         alt={movie.title}
       />
-      {/* Menambahkan Link ke Title */}
       <Link to={`/movie/${movie.id}`}>
         <h3>{movie.title}</h3>
       </Link>

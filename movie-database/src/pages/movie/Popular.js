@@ -7,7 +7,6 @@ import { updateMovies } from "../../features/moviesSlice";
 import ENDPOINTS from "../../utils/constants/endpoint";
 
 function PopularMovie() {
-  // Membuat state movie
   const dispatch = useDispatch();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -17,8 +16,9 @@ function PopularMovie() {
 
   async function getPopularMovies() {
     const response = await axios(ENDPOINTS.POPULAR);
-    // Jalankan action updateMovies: kirim movies dari api
-    dispatch(updateMovies(response.data.results));
+    const movies = response.data.results;
+
+    dispatch(updateMovies(movies));
   }
 
   return (
